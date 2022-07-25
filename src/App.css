@@ -19,3 +19,35 @@ a:active {
 ul {
   list-style: none;
 }
+
+/* ----------------- */
+:root {
+  --bg-main-color: #797979;
+  --bg-section-color: #3f3d47;
+  --bg-play-area-color: #2d2535;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+
+  padding: 10px;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--bg-main-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.play-area {
+  background-color: var(--bg-play-area-color);
+  border-radius: 30px;
+}
+
+section {
+  width: 100%;
+  height: 100%;
+}
