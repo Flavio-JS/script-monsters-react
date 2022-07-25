@@ -1,0 +1,10 @@
+:root {
+  --header-bg: #797979;
+}
+
+header {
+  width: 100%;
+  padding: 10px 10px;
+  text-align: center;
+  background-color: var(--header-bg);
+}
