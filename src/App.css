@@ -23,8 +23,19 @@ ul {
 /* ----------------- */
 :root {
   --bg-main-color: #797979;
+  --header-bg: #797979;
   --bg-section-color: #3f3d47;
   --bg-play-area-color: #2d2535;
+  --bg-button-color: #00000099;
+  --letter-color: #d9d9d9;
+  --border-list: #d1d1d1;
+  --header-letter-color: #000;
+}
+
+body {
+  height: auto;
+  color: var(--letter-color);
+  font-family: "Courier New", Courier, monospace;
 }
 
 #root {
@@ -40,6 +51,7 @@ ul {
 .container {
   width: 100%;
   max-width: 1200px;
+  height: 100%;
 }
 
 .play-area {

@@ -11,8 +11,9 @@ export const HowToPlay = ({ children }: Props) => {
       <div className="play-area">
         <h2>Como Jogar</h2>
         <ul>
-          <li>Escolha seu ScriptMonster</li>
-          <li>Durante o jogo escolha uma das 3 ações</li>
+          <li>Necessário 2 jogadores</li>
+          <li>Cada jogador escolha seu ScriptMonster</li>
+          <li>Durante o jogo e durante seu turno, escolha uma das 3 ações</li>
           <li>
             <ul id="how-to-play-skills">
               Cada ScriptMonster tem 3 habilidades
