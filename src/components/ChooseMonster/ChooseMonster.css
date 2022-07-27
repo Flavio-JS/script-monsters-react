@@ -1,5 +1,9 @@
 @import "../../App.css";
 
+:root {
+  --hover-color: #bbbbbb85;
+}
+
 .choose-monster {
   height: 90%;
   display: flex;
@@ -15,9 +19,19 @@
   font-size: 40px;
 }
 
+.choose-monster-arrows {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+.choose-monster-arrows:hover {
+  cursor: pointer;
+  background-color: var(--hover-color);
+}
+
 .monster-img {
-  background-image: url("../../img/FireMonster/Fire-Monster-normal.png");
-  background-color: #cccccc;
+  border-radius: 25px;
+  background-color: #fff;
   min-height: 150px;
   min-width: 150px;
   background-position: center;
