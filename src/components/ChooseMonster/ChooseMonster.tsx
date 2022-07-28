@@ -1,4 +1,5 @@
 import "./ChooseMonster.css";
+import "../Button/Button.css";
 import { ReactNode, useState } from "react";
 import { BsFillArrowLeftCircleFill } from "react-icons/bs";
 import { BsFillArrowRightCircleFill } from "react-icons/bs";
@@ -7,56 +8,39 @@ import { playerStatus } from "../../Types/playerStatus";
 type Props = {
   player: playerStatus;
   monsters: playerStatus[];
+  text: string;
+  choiceFn: (e: playerStatus) => any;
   children: ReactNode;
 };
 
-export const ChooseMonster = ({ children, player, monsters }: Props) => {
+export const ChooseMonster = ({
+  children,
+  player,
+  text,
+  monsters,
+  choiceFn,
+}: Props) => {
   let [counter, setCounter] = useState(0);
-  let [monsterImg, setMonsterImg] = useState(
-    <div
-      className="monster-img"
-      style={{
-        backgroundImage: `url(${monsters[counter].ImgsDirectory}/normal.png)`,
-      }}
-    ></div>
-  );
-  let [teste, setTeste] = useState(
-    `url(${monsters[counter].ImgsDirectory}/normal.png)`
-  );
 
   const changeLeft = () => {
     if (counter > 0) {
       setCounter(counter - 1);
-      setMonsterImg(
-        <div
-          className="monster-img"
-          style={{
-            backgroundImage: `url(${monsters[counter].ImgsDirectory}/normal.png)`,
-          }}
-        ></div>
-      );
-      //console.log(`positionMonster: ${positionMonster}`);
     }
   };
   const changeRight = () => {
     if (counter < monsters.length - 1) {
       setCounter(counter + 1);
-      setMonsterImg(
-        <div
-          className="monster-img"
-          style={{
-            backgroundImage: `url(${monsters[counter].ImgsDirectory}/normal.png)`,
-          }}
-        ></div>
-      );
-      //console.log(`positionMonster: ${positionMonster}`);
     }
+  };
+  const choiceMonster = () => {
+    player = monsters[counter];
+    choiceFn(player);
   };
 
   return (
     <section className="choose-monster ">
       <div className="play-area">
-        <h2>Escola seu ScriptMonster </h2>
+        <h2>{text} Escolha seu ScriptMonster </h2>
         <div className="choose-monster-box-img">
           <div className="choose-monster-arrows" onClick={changeLeft}>
             <BsFillArrowLeftCircleFill />
@@ -109,6 +93,7 @@ export const ChooseMonster = ({ children, player, monsters }: Props) => {
           </ul>
         </div>
         {children}
+        <button onClick={choiceMonster}>Escolher</button>
       </div>
     </section>
   );
