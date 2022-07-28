@@ -6,5 +6,9 @@ type Props = {
 };
 
 export const Button = ({ text, clickfn }: Props) => {
-  return <button onClick={clickfn}>{text}</button>;
+  const handleClick = () => {
+    clickfn();
+  };
+
+  return <button onClick={handleClick}>{text}</button>;
 };
