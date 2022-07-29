@@ -2,7 +2,7 @@
 Project I created in order to put my studies in React and TypeScript into practice
 ## to start `npm start`
 <br/>
-<h2>link netlify: https://classy-klepon-921897.netlify.app/</h2>
+<h2>link netlify: https://resilient-kitsune-190879.netlify.app/</h2>
 
 <div>
   <img src="https://user-images.githubusercontent.com/106037619/181840927-0826336f-00d3-4391-9450-4cbbc944f9ee.png"  width="400">
