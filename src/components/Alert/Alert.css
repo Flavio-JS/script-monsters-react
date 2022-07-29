@@ -1,0 +1,22 @@
+@import "../../App.css";
+
+:root {
+  --border-alert-color: #ff8800;
+  --bg-alert-color: #d4d1d1;
+  --letter-alert-color: #b62424;
+}
+
+.alert {
+  position: fixed;
+  height: auto;
+  left: calc(50% - 100px);
+  width: 200px;
+  padding: 10px;
+  border: 2px solid var(--border-alert-color);
+  border-radius: 50px;
+  background-color: var(--bg-alert-color);
+  color: var(--letter-alert-color);
+  -webkit-animation: shake-bottom 1s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    both;
+  animation: shake-bottom 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+}
