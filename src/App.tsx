@@ -153,7 +153,7 @@ function App() {
 
   let fireMonsterStatus: playerStatus = {
     ID: "Fire",
-    HP: 2000,
+    HP: 1000,
     Stamina: 0,
     SkillAtk: 200,
     NormalAtk: 100,
@@ -166,7 +166,7 @@ function App() {
   };
   let aquaMonsterStatus: playerStatus = {
     ID: "Aqua",
-    HP: 2000,
+    HP: 1000,
     Stamina: 0,
     SkillAtk: 200,
     NormalAtk: 100,
@@ -179,7 +179,7 @@ function App() {
   };
   let iceMonsterStatus: playerStatus = {
     ID: "Ice",
-    HP: 2000,
+    HP: 1000,
     Stamina: 0,
     SkillAtk: 200,
     NormalAtk: 100,

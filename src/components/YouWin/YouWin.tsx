@@ -44,9 +44,7 @@ export const YouWin = ({ text, player1Img, player2Img }: Props) => {
             ></div>
           </>
         )}
-        <a href="https://starlit-croissant-852848.netlify.app/">
-          JOGAR NOVAMENTE
-        </a>
+        <a href="https://classy-klepon-921897.netlify.app/">JOGAR NOVAMENTE</a>
       </div>
     </section>
   );
