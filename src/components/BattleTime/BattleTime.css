@@ -1,0 +1,85 @@
+@import "../../App.css";
+
+:root {
+  --letter-color-log: #000;
+  --bg-log: #d1d1d1;
+  --border-status-hp: #5a1010;
+  --bg-status-hp: #861818;
+  --border-status-stamina: #134e13;
+  --bg-status-stamina: #1e701e;
+}
+
+.battle-time {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  -webkit-animation: scale-in-ver-center 0.5s
+    cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: scale-in-ver-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+.battle-time-play-items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
+
+.battle-time-log {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  background-color: var(--bg-log);
+  color: var(--letter-color-log);
+  padding: 5px;
+  border-radius: 20px;
+  height: 80px;
+  text-align: center;
+  min-width: 200px;
+  margin-bottom: 10px;
+}
+
+.battle-time-status {
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  padding: 10px 0;
+}
+
+.battle-time-monster-img {
+  border-radius: 25px;
+  background-color: #fff;
+  min-height: 200px;
+  min-width: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 5px;
+}
+
+.battle-time-status-border-bar-hp {
+  width: 100%;
+  border: solid 1px var(--border-status-hp);
+  margin-bottom: 5px;
+}
+
+.battle-time-status-bar-hp {
+  height: 20px;
+  background-color: var(--bg-status-hp);
+  transition: width 0.5s;
+}
+
+.battle-time-status-border-bar-stamina {
+  width: 100%;
+  border: solid 1px var(--border-status-stamina);
+  margin-bottom: 5px;
+}
+
+.battle-time-status-bar-stamina {
+  height: 20px;
+  background-color: var(--bg-status-stamina);
+  transition: width 0.5s;
+}
