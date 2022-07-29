@@ -54,7 +54,7 @@ export const BattleTime = ({
         enemy.HP = 0;
         setTimeout(() => {
           fnWin(text);
-        }, 2000);
+        }, 3000);
       } else {
         setTimeout(() => {
           fn();
@@ -149,9 +149,11 @@ export const BattleTime = ({
         setAction(0);
         turn++;
         fnLog(turn, log1, log2, statusImgP1Position, statusImgP2Position);
-        setTimeout(() => {
-          fn();
-        }, 2000);
+        if (enemy.HP <= 0) {
+          setTimeout(() => {
+            fn();
+          }, 2000);
+        }
       } else {
         setStaminaAlert(true);
         setTimeout(() => {
