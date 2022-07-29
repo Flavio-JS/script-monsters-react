@@ -57,8 +57,8 @@ export const ChooseMonster = ({
           </div>
         </div>
         <div className="choose-monster-box-info">
-          <h3>Status</h3>
           {counter + 1}/{monsters.length}
+          <h3>Status</h3>
           <ul>
             <li>
               Nome: <b>{monsters[counter].ID + "Monster"}</b>

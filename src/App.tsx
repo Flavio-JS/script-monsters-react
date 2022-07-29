@@ -6,6 +6,7 @@ import { ChooseMonster } from "./components/ChooseMonster/ChooseMonster";
 import { playerStatus } from "./Types/playerStatus";
 import { NextTurn } from "./components/NextTurn/NextTurn";
 import { BattleTime } from "./components/BattleTime/BattleTime";
+import { YouWin } from "./components/YouWin/YouWin";
 
 import "./App.css";
 
@@ -16,13 +17,15 @@ function App() {
   let [player2ChooseMonster, setPlayer2ChooseMonster] = useState(false);
   let [player1Turn, setPlayer1Turn] = useState(false);
   let [player2Turn, setPlayer2Turn] = useState(false);
-  let [battleTimeP2, setBattleTimeP2] = useState(false);
   let [battleTimeP1, setBattleTimeP1] = useState(false);
+  let [battleTimeP2, setBattleTimeP2] = useState(false);
   let [turn, setTurn] = useState(0);
   let [log1, setlog1] = useState("Começou o jogo");
   let [log2, setlog2] = useState("");
   let [statusImgP1Position, SetStatusImgP1Position] = useState(2);
   let [statusImgP2Position, SetStatusImgP2Position] = useState(2);
+  let [winGame, setWinGame] = useState(false);
+  let [winer, setWiner] = useState("");
 
   let [player1, setPlayer1] = useState({
     ID: "player1",
@@ -116,6 +119,13 @@ function App() {
     setlog2(log2);
     SetStatusImgP1Position(updateImgP1);
     SetStatusImgP2Position(updateImgP2);
+  };
+
+  let fnWinGame = (winer: string) => {
+    setBattleTimeP2(false);
+    setBattleTimeP1(false);
+    setWiner(winer);
+    setWinGame(true);
   };
 
   /* variáveis */
@@ -227,6 +237,7 @@ function App() {
           log2={log2}
           fn={battleTurnP1}
           fnLog={setLogs}
+          fnWin={fnWinGame}
           statusImgP1={statusImgP1}
           statusImgP2={statusImgP2}
           statusImgP1Position={statusImgP1Position}
@@ -243,11 +254,19 @@ function App() {
           log2={log2}
           fn={battleTurnP2}
           fnLog={setLogs}
+          fnWin={fnWinGame}
           statusImgP1={statusImgP1}
           statusImgP2={statusImgP2}
           statusImgP1Position={statusImgP1Position}
           statusImgP2Position={statusImgP2Position}
         ></BattleTime>
+      )}
+      {winGame && (
+        <YouWin
+          text={winer}
+          player1Img={player1.ImgsDirectory}
+          player2Img={player2.ImgsDirectory}
+        />
       )}
     </div>
   );

@@ -18,6 +18,7 @@ type Props = {
     updateImgP1: number,
     updateImgP2: number
   ) => any;
+  fnWin: (text: string) => any;
   statusImgP1: string[];
   statusImgP2: string[];
   statusImgP1Position: number;
@@ -37,8 +38,10 @@ export const BattleTime = ({
   statusImgP2,
   statusImgP1Position,
   statusImgP2Position,
+  fnWin,
 }: Props) => {
-  let [alert, setAlert] = useState(false);
+  let [staminaAlert, setStaminaAlert] = useState(false);
+  let [healAlert, setHealStaminaAlert] = useState(false);
   let [action, setAction] = useState(1);
 
   const onClickBite = () => {
@@ -47,9 +50,16 @@ export const BattleTime = ({
       setAction(0);
       turn++;
       fnLog(turn, log1, log2, statusImgP1Position, statusImgP2Position);
-      setTimeout(() => {
-        fn();
-      }, 2000);
+      if (enemy.HP <= 0) {
+        enemy.HP = 0;
+        setTimeout(() => {
+          fnWin(text);
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          fn();
+        }, 2000);
+      }
     }
   };
   const bite = () => {
@@ -143,9 +153,9 @@ export const BattleTime = ({
           fn();
         }, 2000);
       } else {
-        setAlert(true);
+        setStaminaAlert(true);
         setTimeout(() => {
-          setAlert(false);
+          setStaminaAlert(false);
         }, 2000);
       }
     }
@@ -155,9 +165,10 @@ export const BattleTime = ({
     let criticalChanceDice = Math.floor(Math.random() * 100);
 
     player.Stamina = 0;
+
     if (hitChanceDice > enemy.EsquivaChance) {
       if (criticalChanceDice <= player.CritChance) {
-        if (player.Forte === enemy.Fraco) {
+        if (player.Forte === enemy.ID) {
           enemy.HP = enemy.HP - player.SkillAtk * 1.5 * 1.05;
 
           if (text === "Player 1") {
@@ -199,23 +210,23 @@ export const BattleTime = ({
           }
         }
       } else {
-        if (player.Forte === enemy.Fraco) {
+        if (player.Forte === enemy.ID) {
           enemy.HP = enemy.HP - player.SkillAtk * 1.05;
 
           if (text === "Player 1") {
-            log1 = `Você acertou uma SKILL CRÍTICA e causou ${
+            log1 = `Você acertou uma SKILL e causou ${
               player.SkillAtk * 1.05
             } de dano`;
 
-            log2 = `Você sofreu uma SKILL CRÍTICO e sofreu ${
+            log2 = `Você sofreu uma SKILL e sofreu ${
               player.SkillAtk * 1.05
             } de dano`;
           } else {
-            log2 = `Você acertou uma SKILL CRÍTICA e causou ${
+            log2 = `Você acertou uma SKILL e causou ${
               player.SkillAtk * 1.05
             } de dano`;
 
-            log1 = `Você sofreu uma SKILL CRÍTICO e sofreu ${
+            log1 = `Você sofreu uma SKILL e sofreu ${
               player.SkillAtk * 1.05
             } de dano`;
           }
@@ -261,8 +272,8 @@ export const BattleTime = ({
         statusImgP1Position = 2;
       }
       /*
-          0-biting 1-lost 2-normal 3-skill 4-take-damage
-        */
+        0-biting 1-lost 2-normal 3-skill 4-take-damage
+      */
     }
     if (text === "Player 1") {
       statusImgP1Position = 3;
@@ -270,13 +281,13 @@ export const BattleTime = ({
       statusImgP2Position = 3;
     }
     /*
-        0-biting 1-lost 2-normal 3-skill 4-take-damage
-      */
+      0-biting 1-lost 2-normal 3-skill 4-take-damage
+    */
   };
 
   const onClickHeal = () => {
     if (action === 1) {
-      if (player.Stamina >= 25) {
+      if (player.Stamina >= 25 && player.HP < 2000) {
         heal();
         setAction(0);
         turn++;
@@ -285,19 +296,42 @@ export const BattleTime = ({
           fn();
         }, 2000);
       } else {
-        setAlert(true);
+        setHealStaminaAlert(true);
         setTimeout(() => {
-          setAlert(false);
+          setHealStaminaAlert(false);
         }, 2000);
       }
     }
   };
-  const heal = () => {};
+  const heal = () => {
+    player.Stamina = player.Stamina - 25;
+    player.HP = player.HP + player.Cura;
+    if (player.HP > 2000) {
+      player.HP = 2000;
+    }
+
+    if (text === "Player 1") {
+      log1 = `Você curou ${player.Cura} de HP`;
+      log2 = `Inimigo curou ${player.Cura} de HP`;
+    } else {
+      log2 = `Você curou ${player.Cura} de HP`;
+      log1 = `Inimigo curou ${player.Cura} de HP`;
+    }
+
+    statusImgP1Position = 2;
+    statusImgP2Position = 2;
+    /*
+      0-biting 1-lost 2-normal 3-skill 4-take-damage
+    */
+  };
 
   return (
-    <section className="battle-time">
-      {alert && <Alert text="Você não tem Stamina" />}
-      <div className="play-area">
+    <div className="play-area">
+      {staminaAlert && <Alert text="Você não tem Stamina" />}
+      {healAlert && (
+        <Alert text="Você não tem Stamina ou seu HP já está em 100%" />
+      )}
+      <section className="battle-time">
         <div className="battle-time-play-items">
           <h2>{text}</h2>
           {text === "Player 1" && (
@@ -352,7 +386,7 @@ export const BattleTime = ({
             <button onClick={onClickHeal}>Curar</button>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
