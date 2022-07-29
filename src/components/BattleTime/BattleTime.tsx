@@ -353,12 +353,12 @@ export const BattleTime = ({
 
           <div className="battle-time-status">
             <div className="battle-time-status-hp">
-              <i>HP: {player.HP}/2000</i>
+              <i>HP: {player.HP}/1000</i>
               <div className="battle-time-status-border-bar-hp">
                 <div
                   className="battle-time-status-bar-hp"
                   style={{
-                    width: `${(player.HP / 2000) * 100}%`,
+                    width: `${(player.HP / 1000) * 100}%`,
                   }}
                 ></div>
               </div>
