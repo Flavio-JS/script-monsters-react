@@ -289,7 +289,7 @@ export const BattleTime = ({
 
   const onClickHeal = () => {
     if (action === 1) {
-      if (player.Stamina >= 25 && player.HP < 2000) {
+      if (player.Stamina >= 25 && player.HP < 1000) {
         heal();
         setAction(0);
         turn++;
@@ -307,9 +307,11 @@ export const BattleTime = ({
   };
   const heal = () => {
     player.Stamina = player.Stamina - 25;
-    player.HP = player.HP + player.Cura;
-    if (player.HP > 2000) {
-      player.HP = 2000;
+    if (player.HP + player.Cura > 1000) {
+      player.HP = player.HP + player.Cura;
+      player.HP = 1000;
+    } else {
+      player.HP = player.HP + player.Cura;
     }
 
     if (text === "Player 1") {
