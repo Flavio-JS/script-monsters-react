@@ -6,16 +6,15 @@ import { BsFillArrowRightCircleFill } from "react-icons/bs";
 import { playerStatus } from "../../Types/playerStatus";
 
 type Props = {
-  player: playerStatus;
   monsters: playerStatus[];
   text: string;
-  choiceFn: (e: playerStatus) => any;
+  choiceFn: (monster: playerStatus) => any;
   children: ReactNode;
 };
 
 export const ChooseMonster = ({
   children,
-  player,
+
   text,
   monsters,
   choiceFn,
@@ -33,8 +32,8 @@ export const ChooseMonster = ({
     }
   };
   const choiceMonster = () => {
-    player = monsters[counter];
-    choiceFn(player);
+    //player = monsters[counter];
+    choiceFn(monsters[counter]);
   };
 
   return (
