@@ -150,6 +150,11 @@ export const BattleTime = ({
         turn++;
         fnLog(turn, log1, log2, statusImgP1Position, statusImgP2Position);
         if (enemy.HP <= 0) {
+          enemy.HP = 0;
+          setTimeout(() => {
+            fnWin(text);
+          }, 3000);
+        } else {
           setTimeout(() => {
             fn();
           }, 2000);
