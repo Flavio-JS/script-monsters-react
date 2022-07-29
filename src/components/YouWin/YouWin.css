@@ -1,0 +1,22 @@
+.you-win {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 90%;
+}
+
+.winer-img,
+.loser-img {
+  border-radius: 25px;
+  background-color: #fff;
+  min-height: 250px;
+  min-width: 250px;
+  max-width: 250px;
+  max-height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 5px;
+}
