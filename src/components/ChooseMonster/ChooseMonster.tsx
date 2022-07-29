@@ -91,8 +91,8 @@ export const ChooseMonster = ({
             </li>
           </ul>
         </div>
-        {children}
         <button onClick={choiceMonster}>Escolher</button>
+        {children}
       </div>
     </section>
   );
